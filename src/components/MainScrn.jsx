@@ -25,10 +25,10 @@ export default function MainScrn(){
                     <tbody>
                         <tr>
                             <td>
-                                <img id="sec-profil" src={img1} alt="" title=""/>
+                                <img id="sec-profil" src={img1} />
                             </td>
                             <td>
-                                <img id="sec-profil" src={img2} alt="" title=""/>
+                                <img id="sec-profil" src={img2} />
                             </td>
                         </tr>
                     </tbody>
