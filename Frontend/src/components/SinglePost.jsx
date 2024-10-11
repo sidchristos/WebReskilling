@@ -1,92 +1,32 @@
-import { Form } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import React from "react";
+import { useLoaderData } from "react-router-dom";
 
-export default function Contact() {
-  const contact = {
-    first: "Your",
-    last: "Name",
-    avatar: "https://robohash.org/you.png?size=200x200",
-    twitter: "your_handle",
-    notes: "Some notes",
-    favorite: true,
-  };
+export default function SinglePost() {
 
+  const  { data }  = useLoaderData();
+  
   return (
-    <div id="contact">
-      <div>
-        <img
-          key={contact.avatar}
-          src={
-            contact.avatar ||
-            `https://robohash.org/${contact.id}.png?size=200x200`
-          }
-        />
-      </div>
-
-      <div>
-        <h1>
-          {contact.first || contact.last ? (
-            <>
-              {contact.first} {contact.last}
-            </>
-          ) : (
-            <i>No Name</i>
-          )}{" "}
-          <Favorite contact={contact} />
-        </h1>
-
-        {contact.twitter && (
-          <p>
-            <a
-              target="_blank"
-              href={`https://twitter.com/${contact.twitter}`}
-            >
-              {contact.twitter}
-            </a>
-          </p>
-        )}
-
-        {contact.notes && <p>{contact.notes}</p>}
-
-        <div>
-          <Form action="edit">
-            <button type="submit">Edit</button>
-          </Form>
-          <Form
-            method="post"
-            action="destroy"
-            onSubmit={(event) => {
-              if (
-                !confirm(
-                  "Please confirm you want to delete this record."
-                )
-              ) {
-                event.preventDefault();
-              }
-            }}
-          >
-            <button type="submit">Delete</button>
-          </Form>
+    <>
+      <div key={data.id} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 px-20 pr-12 pb-32">
+        <div className="flex flex-col col-span-1 gap-6 pr-4 tracking-tight">
+          <h1 id="title" className="font-[700] text-[64px] text-black  text-left tracking-tight capitalize lg:w-auto xl:w-[58rem]"> 
+            {data.title} 
+          </h1>
+          <h3 id="subheader" className="font-[400] text-[24px] text-[#787777]  text-left">
+            <p>{data.safeSubheader}</p>
+          </h3>
+          <h2 className="font-[500] text-[20px]  text-left "> 
+            <p id="par1" className="text-left text-black ">{data.safeParagraph1}</p>
+            <br/>
+            <p id="par2" className="text-left text-black">{data.safeParagraph2}</p>
+            <p id="par3" className="text-left text-black">{data.safeParagraph3}</p>
+          </h2>
+        </div>
+        <div className="flex col-span-1 lg:col-span-1 justify-end pl-0 md:pl-16 lg:pl-28 pr-0 pb-0 -mb-10">  
+          <img id="Photo" src={data.photo} className="rounded-lg lg:w-[508px] lg:h-[657px]  "/>
         </div>
       </div>
-    </div>
-  );
-}
-
-function Favorite({ contact }) {
-  const favorite = contact.favorite;
-  return (
-    <Form method="post">
-      <button
-        name="favorite"
-        value={favorite ? "false" : "true"}
-        aria-label={
-          favorite
-            ? "Remove from favorites"
-            : "Add to favorites"
-        }
-      >
-        {favorite ? "★" : "☆"}
-      </button>
-    </Form>
+    </>
   );
 }

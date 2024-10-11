@@ -1,47 +1,40 @@
-import React from 'react';
-import '../App.css';
-import heroimg from '../assets/heroImg.png'
-import img1 from '../assets/img1.jpeg'
-import img2 from '../assets/img2.jpeg'
-import Cards from './Cards'
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect,lazy,Suspense } from 'react'
+import axios from 'axios'
+
+const IntroPost = lazy(() => import('./IntroPost'))
+const Cards = lazy(() => import('./Cards'))
 
 export default function MainScrn(){
+
+    const [cards, setCards] = useState([]);
+    const [intro, setIntro] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get("http://localhost:3000/posts?limit=9");
+            setCards(response.data);
+            const response2 = await axios.get("http://localhost:3000/post/intro");
+            setIntro(response2.data);
+        };
+        fetchData();
+    }, []); 
+
+
     return (
-        <div>
-            <div className="MainHeader">
-                <div className="PostsList">Posts List</div>
-                <div className="SubHeader">Subheading that sets up context, shares more info about the author, or generally gets people psyched to keep reading</div>
-            </div>
-            
-            <div className="Main">
-                <img src={heroimg}/>
-                <div className="Paragraph1">
-                    Body text for your whole article or post. We’ll put in some lorem ipsum to show how a filled-out page might look:
-                    Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui  international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
-                    Exquisite sophisticated iconic cutting-edge laborum deserunt Addis Ababa esse bureaux cupidatat id minim. Sharp classic the best commodo nostrud delightful. Conversation aute Rochester id. Qui sunt remarkable deserunt intricate airport handsome K-pop excepteur classic esse Asia-Pacific laboris.
-                </div>
-
-                <table  className="image-table">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <img id="sec-profil" src={img1} />
-                            </td>
-                            <td>
-                                <img id="sec-profil" src={img2} />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div className="Paragraph2">
-                    Excepteur efficient emerging, minim veniam anim cloying aute carefully curated gauche. Espresso exquisite perfect nostrud nisi intricate. Punctual adipisicing Borzoi, essential lovely tempor eiusmod irure. Exclusive izakaya charming Quezon City impeccable aute quality of life soft power pariatur occaecat discerning. Qui wardrobe aliquip, et Amadeus rock opera.
-                    Exquisite sophisticated iconic cutting-edge laborum deserunt esse bureaux cupidatat id minim. Sharp classic the best commodo nostrud delightful. Conversation aute wifey id. Qui sunt remarkable deserunt intricate airport excepteur classic esse riot girl.
-                </div>
-                
-                <Cards></Cards>
-            </div>
-        </div>
+        <>
+        <Suspense fallback={<Loading />}>
+            <IntroPost intro={intro}/>
+            <Cards cards={cards} /> 
+        </Suspense>
+        </>
     );
 }
 
+function Loading() {
+    return (
+      <h2 className="w-screen h-screen flex justify-center items-center font-[700] text-[64px] text-black text-left tracking-tight capitalize">
+        🌀 Loading...
+      </h2>
+    );
+  }  
