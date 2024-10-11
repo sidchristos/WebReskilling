@@ -18,12 +18,12 @@ This project involves building a full-stack application with a **Node/Express** 
 ## Steps to Run the Project:
 
 ### Frontend:
-1. Navigate to the `reskill-frontend-app` folder.
+1. Navigate to the `Frontend` folder.
 2. Install dependencies: `npm install`
 3. Run the React app: `npm run dev`
 
 ### Backend:
-1. Navigate to the backend project folder.
+1. Navigate to the `Backend` folder.
 2. Install dependencies: `npm install`
 3. Start the Node server: `npm start`
 
@@ -32,7 +32,7 @@ This project involves building a full-stack application with a **Node/Express** 
 - **Backend**: Node.js, Express, Axios, CORS
 
 ## Design:
-Frontend is based on the provided Figma design: [Figma Design](https://www.figma.com/design/iuUqPGo4UHyJsmdjScdVNZ/)
+Frontend is based on the provided [Figma Design](https://www.figma.com/design/iuUqPGo4UHyJsmdjScdVNZ/)
 
 ## Author:
 **Stefanou Christos**
