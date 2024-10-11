@@ -44,7 +44,6 @@ app.get("/posts", async (req, res) => {
     }
   });
   
-
 app.get("/post/:id", async (req, res) => {
   const { id } = req.params;
 
@@ -123,7 +122,6 @@ app.get("/post/:id", async (req, res) => {
     res.status(500).json({ message: 'Error fetching data from external APIs' });
   }
 });
-
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
