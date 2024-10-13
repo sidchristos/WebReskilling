@@ -10,7 +10,7 @@ export default function SinglePost() {
     <>
       <div key={data.id} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 px-20 pr-12 pb-32">
         <div className="flex flex-col col-span-1 gap-6 pr-4 tracking-tight">
-          <h1 id="title" className="font-[700] text-[64px] text-black  text-left tracking-tight capitalize lg:w-auto xl:w-[58rem]"> 
+          <h1 id="title" className="font-[700] text-[64px] text-black  text-left tracking-tight capitalize lg:w-auto xl:w-auto"> 
             {data.title} 
           </h1>
           <h3 id="subheader" className="font-[400] text-[24px] text-[#787777]  text-left">
