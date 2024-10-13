@@ -5,7 +5,7 @@ import '../App.css';
 export default function Header(){
     return (
         <>
-            <div className="py-14 px-12 md:p-12 lg:p-15  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 lg:gap-10 w-6/6">
+            <div className="py-14 px-12 md:p-12 lg:p-15  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 lg:gap-10 w-screen">
                 <div className="md:col-span-1  lg:col-span-3" id="Right">
                     <div className="py-4 lg:py-0 md:py-0  flex flex-col">
                     <h1 className="text-xl font-bold text-black tracking-tight">
