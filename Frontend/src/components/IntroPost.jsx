@@ -18,7 +18,7 @@ export default function IntroPost({ intro }){
                 <p id="par2" className=' 2xl:ml-40'> {intro.paragraph2} </p>
                 <p id="par3" className=' 2xl:ml-40'> {intro.paragraph3} </p>
             </div>
-            <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-rows-1 gap-8 lg:h-dvh w-full -mb-20">
+            <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-rows-1 gap-8 lg:h-dvh w-full lg:-mb-20">
                 <img id="img2" className="rounded-lg  md:h-5/6 lg:h-5/6 sm:h-auto w-full " src={intro.photo2}></img>
                 <img id="img3" className="rounded-lg  md:h-5/6 lg:h-5/6 sm:h-auto w-full " src={intro.photo3}></img>
             </div>
