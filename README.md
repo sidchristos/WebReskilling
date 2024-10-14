@@ -1,7 +1,7 @@
-# Project Name: Full Stack Application with Node/Express Backend & React Frontend
+# Full Stack Application with Node/Express Backend & React Frontend
 
 ## Overview:
-This project involves building a full-stack application with a **Node/Express** backend and a **ReactJS** frontend. The backend integrates two 3rd-party APIs and provides a single output, while the frontend displays the data according to a given design.
+This project involves building a full-stack application with a **Node/Express** backend and a **ReactJS** frontend. The backend integrates two 3rd-party APIs, while the frontend displays the data according to a given design.
 
 ## Key Features:
 - **Backend**: Node/Express, Axios, and CORS for fetching and serving 3rd-party API data.
