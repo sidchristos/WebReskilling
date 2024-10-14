@@ -6,10 +6,10 @@ import { FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram } from 'react-icons/f
 export default function Footer(){
     return (
     <>
-      <div className="px-20 pb-10 ">
+      <div id='footerContainer' className="px-20 pb-10 ">
         <hr />
-        <div className="pt-12 grid grid-cols-2 gap-8 ">
-          <div className="col-span-1" id="Right">
+        <div id='footer' className="pt-12 grid grid-cols-2 gap-8 ">
+          <div  id="Right" className="col-span-1">
             <div className="flex flex-col items-start gap-20 ">
               <div>
                 <h1 className=" inline-block font-[400] text-[24px] text-slate-900 tracking-tight dark:text-slate-200">
@@ -36,7 +36,7 @@ export default function Footer(){
             </div>
             </div>
           </div>
-          <div className="col-span-1" id="Left">
+          <div id="Left" className="col-span-1" >
             <div className="flex flex-row items-start  justify-between tracking-tight">
               <div className="flex flex-col items-start gap-3 md:pr-16 lg:pr-20">
                 <span className="text-black font-[500] text-[16px]">Topic</span>

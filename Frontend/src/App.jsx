@@ -20,11 +20,6 @@ const router = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: "/error",
-    element: <Error />,
-    errorElement: <Error />,
-  },
-  {
     path: "/SinglePost/:id",
     loader: async ({ params }) => {
       const response = await axios.get(
