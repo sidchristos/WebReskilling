@@ -9,40 +9,42 @@ app.use(cors());
 
 app.get("/posts", async (req, res) => {
     try {
-        const limit = parseInt(req.query.limit) || 9;
+        //const limit = parseInt(req.query.limit) || 9;
         const placeholderThumbnail = 'https://via.placeholder.com/150'; 
 
         const [postsResponse, photosResponse] = await Promise.all([
             axios.get("https://jsonplaceholder.typicode.com/posts"),
             axios.get("https://jsonplaceholder.typicode.com/photos"),
         ]);
-  
+/*
+//  1st Version - Shuffle and pick 9 random posts
         let unshuffledPosts = postsResponse.data;
         const posts = unshuffledPosts
                         .map(value => ({ value, sort: Math.random() }))
                         .sort((a, b) => a.sort - b.sort)
                         .map(({ value }) => value)
                         .slice(0, limit);
-  
+*/
+        const posts = postsResponse.data;
         const photos = photosResponse.data;
         
         const combinedData = posts.map((post) => {
-        const photo = photos.find((photo) => photo.id === post.id);
-  
-        return {
-          userId: post.userId,
-          id: post.id,
-          title: post.title,
-          thumbnail: photo ? photo.thumbnailUrl : placeholderThumbnail,
-        };
-    });  
+          const photo = photos.find((photo) => photo.id === post.id);
+    
+          return {
+            userId: post.userId,
+            id: post.id,
+            title: post.title,
+            thumbnail: photo ? photo.thumbnailUrl : placeholderThumbnail,
+          };
+        });  
       console.log("Combined Data: ", combinedData);
       res.json(combinedData);
     } catch (error) {
       console.error("Error fetching data: ", error);
       res.status(500).json({ message: 'Error fetching data from external APIs' });
     }
-  });
+});
   
 app.get("/post/:id", async (req, res) => {
   const { id } = req.params;
@@ -80,14 +82,14 @@ app.get("/post/:id", async (req, res) => {
                     paragraph4:"Excepteur efficient emerging, minim veniam anim cloying aute carefully curated gauche. Espresso exquisite perfect nostrud nisi intricate. Punctual adipisicing Borzoi, essential lovely tempor eiusmod irure. Exclusive izakaya charming Quezon City impeccable aute quality of life soft power pariatur occaecat discerning. Qui wardrobe aliquip, et Amadeus rock opera.",
                     paragraph5:"Exquisite sophisticated iconic cutting-edge laborum deserunt esse bureaux cupidatat id minim. Sharp classic the best commodo nostrud delightful. Conversation aute wifey id. Qui sunt remarkable deserunt intricate airport excepteur classic esse riot girl.",
                     photo:
-                        "https://s3-alpha-sig.figma.com/img/1481/875b/94ba2048fe9940fe0061a0819ceed048?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=giW2bwPrzu6h5RjqQ0Gds21isIGxRjdfjl86yE0505gJgPvuRfdDEDGtw9Vk9LaOozcaeX4qQb3ELbXiSH42QBH6woi0S6g-ZaWx3C1bt-l~uiybva1DT44sN9dMny7HSb4bySbnp0~dPPqz2xYKg1ltVjBdBYU~dxoUPGWXy1Y3yD443rolKTmUgdHYqMKqhTMRlKjoETFs36Zwm9~x2gVitNB7b6~np7FhlN9SlPQtS8j2PzuxManxpvtSGkODS8aoAUGPUsmtuDyCwQtvsWRC1ZUskEvPIiZaXQEzrHh1s8dW2oA3MM~pVDw57Jq3UJnfLIyATg8reZPUjWXnQw__",
+                    "https://s3-alpha-sig.figma.com/img/1481/875b/94ba2048fe9940fe0061a0819ceed048?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=QJFPRPDN2p~dAQpOUxl2FftECfr4puE-e9GefUQDon9PkYARtCBzOn-8XQ3sBcCejmRPp3jWHxnA9afy7Ep95gCuBIwM6BRw8NkPVDJq9EGtADGaxq4RCcWAyUoOC14ornYlVQm9qOu0hBm2QKjooPBcz5zm3pMVgJLHTK4khYHsxCGU3z6Rnd1wrXevfbKWzIZnKYxjS4~YBlK7loqoJ8fQavJ4CPWD-bR5OCnYIY4P57tCrKeo3pJHZWWwwnut84ToN~NQClI2glmS6ZnKSNAnLMDkM7Yt4NhpHRdsRa8~xh9x1HqPZL9lg7rVesLNQCnbw7NphN0drGr7t4Uw1A__",
                     photo2:
-                        "https://s3-alpha-sig.figma.com/img/7e48/40b3/1c503e489a78910497ed513b9fbd8cba?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KBOxdMfa59LGrBIS4Zjhzp8Pt9a9pOEjoY-vtD09GG81sWpAuW1QM99H1urN-d~Pbtu9G7~aMCJ8t19swLJbZwZufenR4ThfNs7OqKryjxJwBuppvAubUuRx-3JWvW~lKDj6lLjNP4WnQHr0HjxJD9kamqQ7T4dUX1dAaUrLl5UgpFwPU1TzlVC2UVr9SkGMEHASQ6NwT9nMqIXFCoeKnnKAWWj1L5uKeSDBxgf2tFVIRMyoAZRdL1AJJ-Tb~ZB-lb14GNRzKmIZPh7tb2EOO420wHXljj2YLef2TRuhMakjAufJMjYk28XkezkqSFTSDNBWODZkfyIE6GGt8IJymQ__",
+                    "https://s3-alpha-sig.figma.com/img/7e48/40b3/1c503e489a78910497ed513b9fbd8cba?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lQQAtjKIhW-3GKGGdxAV0EZqTGLdDXwUityl81fHils5v3l5z00EvMPNy47hcnW9AFha0qajFKCGi6QvRUCZ-u-VLGoxkKmYdamEhEV0xZiL2xgWiqGQ8wdjM-Vh1cntuc9ns5psvEze~7Vtd1eFoYK4xnorTHyFtNElrGGD0jkvnj~1G-~NMyuE1yWbbuC0461cGOcNrjkqTUwHAV-0pkn9PcvWdAJe-xra8jN9bOntU8RDvyxM0efCxDB8jdfU~CIserzmXA62AmCmtpVqqbAAOtSEkjb2bcBo-AjEIu1L1lywwRnAXm56npVZKiZsyanCOYjaHlnzh5DW7-DF6A__",
                     photo3:
-                        "https://s3-alpha-sig.figma.com/img/fd5a/0887/5978c5ebf87cd49bf2e51ecdfcd19dc4?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=WeDuHiO1HTrt4Ad0VHphqK7Y67l~ilEGrEWH1OLTcadbscABkOPR9yru1hk9yhvVNM4UdNf6wEHsnSTt2uUDFBjfBr4SOumwfs6-GZTE0UGsHPLasfdwOUXFOIBP-9N1UFKnTwhloChzNrQbgR9cdpR6Pd4tf9PnFJpKxuVkjiG4fUF~gSYfLwmDd33DUcgTGU2H2t09HMAeRlsvBdmQqo-PK055XGSM2mBVH7ZFI5RV8xm7qF2lYasN109ExYp~OtfrcxUB9RUv1~CJzZO0zGxLIpdqGsXSZPt1aGoIr5h9IzosND9fXLOpen4ceqzKHQzVGa31joe16~0U9vMZYQ__"
+                    "https://s3-alpha-sig.figma.com/img/fd5a/0887/5978c5ebf87cd49bf2e51ecdfcd19dc4?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Rru5ZM3HUAWB6XVy5msaqFj7PlsI5gjPLvPXA3t-gInDMQPmFF6Gs6ED8HLMSe9XJMR30vJFMgNTpbYguCPcvIgbpPsaNhej-hGHVdxu2HO560Q8vNE09xvBlr9UeLC~OYmVYtedFM1rs4LjYDQ2zMco~itM2BTABgpztyrewfSwvx-nx5QwS9KbpT~jz4aRza~jEsz1KZ1SSUEVcNvtTTEYfcXECuF3rsvDyzWlIlDv5Yl1yU92w6Wk5aSkUEODHigTFegefd024o3eOdj7-KwIXKVx07iAxJr9dv5BzQ3VhkK8KMYlaSQ-5t~gxpxdNF-keFCCqzPMpF4JUVDzUg__"
                 };    
             return res.json(specialData);;
-  }
+    }
 
   try {
     const [postResponse, photoResponse] = await Promise.all([
@@ -116,6 +118,30 @@ app.get("/post/:id", async (req, res) => {
       photo: photo.url,
     };
     console.log("Combined: ",combinedData);
+    res.json(combinedData);
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    res.status(500).json({ message: 'Error fetching data from external APIs' });
+  }
+});
+
+app.get("/todos", async (req, res) => {
+  try {
+      const [todoResponse] = await Promise.all([
+          axios.get("https://jsonplaceholder.typicode.com/todos"),
+      ]);
+
+      const todos = todoResponse.data;
+      
+      const combinedData = todos.map((todo) => {
+        return {
+          userId: todo.userId,
+          id: todo.id,
+          title: todo.title,
+          completed: todo.completed ,
+        };
+      });  
+    console.log("Combined Data: ", combinedData);
     res.json(combinedData);
   } catch (error) {
     console.error("Error fetching data: ", error);

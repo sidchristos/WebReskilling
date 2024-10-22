@@ -31,6 +31,18 @@ export default function MainScrn(){
     );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 function Loading() {
     return (
       <h2 className="w-screen h-screen flex justify-center items-center font-[700] text-[64px] text-black text-left tracking-tight capitalize">

@@ -7,7 +7,7 @@ export default function IntroPost({ intro }){
         <>
         <div id='introPost'>
             <div id='Intro' className="flex flex-col gap-10  px-20">
-            <div id='IntroTextPic'>
+            <div id='IntroText'>
                 <h1 id="title" className="font-bold text-black text-[64px] tracking-tight"> {intro.title} </h1>
                 <h4 id="line1" className="text-[#787777] text-[24px] font-[400] tracking-tight mt-7"> {intro.IntroLine1} </h4> 
                 <h4 id="line2" className="text-[#787777] text-[24px] font-[400] tracking-tight">{intro.IntroLine2}</h4>
@@ -19,8 +19,8 @@ export default function IntroPost({ intro }){
                 <p id="par3" className=' 2xl:ml-40'> {intro.paragraph3} </p>
             </div>
             <div id='SecondaryPics' className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-rows-1 gap-8 lg:h-dvh w-full lg:-mb-20">
-                <img id="img2" className="rounded-lg  md:h-5/6 lg:h-5/6 sm:h-auto w-full " src={intro.photo2}></img>
-                <img id="img3" className="rounded-lg  md:h-5/6 lg:h-5/6 sm:h-auto w-full " src={intro.photo3}></img>
+                <img id="img2" className="rounded-lg  md:h-5/6 lg:h-5/6 sm:h-auto w-full " src={intro.photo2} ></img>
+                <img id="img3" className="rounded-lg  md:h-5/6 lg:h-5/6 sm:h-auto w-full " src={intro.photo3} ></img>
             </div>
             <div id='LastIntroText' className="flex flex-col gap-6 lg:pb-12 lg:px-52 md:px-32 text-black text-[20px] font-[500] tracking-tight w-10/12 h-full -mt-11 lg:ml-20">
                 <p id="par4" className=' 2xl:ml-40'> {intro.paragraph4} </p>

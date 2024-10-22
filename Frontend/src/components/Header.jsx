@@ -25,7 +25,11 @@ export default function Header(){
                         <li>
                         <a href="/" className="hover:font-bold font-[500] text-[20px] cursor-pointer text-black">Page</a>
                         </li>
-                        <button className="nav-button">Button</button>
+                        <a href="/TestV2">
+                                <button className="w-[83px] h-[34px] font-inter font-medium text-[16px] leading-[150%] flex items-center text-white flex-none order-0 flex-grow-0 hover:bg-[#3a3e42]">
+                                    TODO
+                                </button>
+                        </a>
                     </ul>
                     </div>
                 </div>

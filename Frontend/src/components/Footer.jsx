@@ -9,7 +9,7 @@ export default function Footer(){
       <div id='footerContainer' className="px-20 pb-10 ">
         <hr />
         <div id='footer' className="pt-12 grid grid-cols-2 gap-8 ">
-          <div  id="Right" className="col-span-1">
+          <div  id="Left" className="col-span-1">
             <div className="flex flex-col items-start gap-20 ">
               <div>
                 <h1 className=" inline-block font-[400] text-[24px] text-slate-900 tracking-tight dark:text-slate-200">
@@ -36,9 +36,9 @@ export default function Footer(){
             </div>
             </div>
           </div>
-          <div id="Left" className="col-span-1" >
-            <div className="flex flex-row items-start  justify-between tracking-tight">
-              <div className="flex flex-col items-start gap-3 md:pr-16 lg:pr-20">
+          <div id="Right" className="col-span-1 " >
+            <div className="flex flex-row items-end  justify-end tracking-tight">
+              <div className="flex flex-col items-end gap-3 md:pr-16 ">
                 <span className="text-black font-[500] text-[16px]">Topic</span>
                 <a className="hover:font-bold cursor-pointer text-[#787777]" href="/">
                   <span>Page</span>
@@ -50,7 +50,7 @@ export default function Footer(){
                   <span>Page</span>
                 </a>
               </div>
-              <div className="flex flex-col items-start gap-3 md:pr-16 lg:pr-20">
+              <div className="flex flex-col items-end gap-3 space-x-20 md:pr-16 ">
                 <span className="text-black font-[500] text-[16px]">Topic</span>
                 <a className="hover:font-bold cursor-pointer text-[#787777]" href="/">
                   <span>Page</span>
@@ -62,7 +62,7 @@ export default function Footer(){
                   <span>Page</span>
                 </a>
               </div>
-              <div className="flex flex-col items-start gap-3 md:pr-16 lg:pr-20">
+              <div className="flex flex-col items-end gap-3 space-x-20 md:pr-16 ">
                 <span className="text-black font-[500] text-[16px]">Topic</span>
                 <a className="hover:font-bold cursor-pointer text-[#787777]" href="/">
                   <span>Page</span>

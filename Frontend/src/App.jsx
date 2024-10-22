@@ -2,25 +2,26 @@
 import React,  {lazy, Suspense}  from 'react'
 import Header from'./components/Header'
 import MainScrn from'./components/MainScrn'
-import Error from "./components/Error"
 import Footer from './components/Footer'
 import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './output.css'
 
 const SinglePost = lazy(() => import("./components/SinglePost"));
+const Error = lazy(() => import("./components/Error"));
+const TestV2 = lazy(() => import("./components/TestV2"));
+
+
 
 const router = createBrowserRouter([
-  {
-    path: "/",
+  {path: "/",
     element:
     <Suspense fallback={<Loading />}>
-      <MainScrn />,
+      <MainScrn />
     </Suspense>,
     errorElement: <Error />,
   },
-  {
-    path: "/SinglePost/:id",
+  {path: "/SinglePost/:id",
     loader: async ({ params }) => {
       const response = await axios.get(
         `http://localhost:3000/post/${params.id}`
@@ -33,11 +34,17 @@ const router = createBrowserRouter([
       </Suspense>,
     errorElement: <Error />,
   },
+  // V2
+  {path: "/TestV2",
+    element:
+    <Suspense fallback={<Loading />}>
+      <TestV2 />
+    </Suspense>,
+    errorElement: <Error />,
+  },
 ]);
 
-
 export default function App(){
-
   return (
     <>
       <Suspense fallback={<Loading />}>
@@ -48,6 +55,18 @@ export default function App(){
     </>
     );
   }
+
+
+
+
+
+
+
+
+
+
+
+
 
 function Loading() {
   return (
