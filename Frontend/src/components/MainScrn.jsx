@@ -12,7 +12,7 @@ export default function MainScrn(){
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get("http://localhost:3000/posts?limit=9");
+            const response = await axios.get("http://localhost:3000/posts?limit=9"); //limit has been removed from Backend
             setCards(response.data);
             const response2 = await axios.get("http://localhost:3000/post/intro");
             setIntro(response2.data);

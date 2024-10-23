@@ -89,6 +89,10 @@ function TestV2() {
             Next
           </button>
         </div>
+        <span className="flex justify-center mt-2 font-bold underline text-purple-700 
+                          drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                            TOTAL PAGES: {totalPages}
+        </span>
       </div>
     </>
   );

@@ -50,7 +50,7 @@ const CardsComponent = ({ cards }) => {
 
             <div id='CardsTable' className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-32 h-auto w-12/12 pl-auto pt-5 pl-14">
                 {currentCards.map((item) => (
-                    <div key={item.id} id={`Card_${item.id}`} className="flex flex-col pb-1 h-10/12 w-10/12">
+                    <div id={`Card_${item.id}`} key={item.id} className="flex flex-col pb-1 h-10/12 w-10/12">
                         <Link className="flex flex-col hover:scale-110 transition-transform" to={`/SinglePost/${item.id}`}>
                             <img className="rounded-lg" src={item.thumbnail} alt={item.title} />
                             <div className="flex flex-col justify-between flex-grow pt-6 h-full">
